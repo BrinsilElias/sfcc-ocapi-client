@@ -1,0 +1,43 @@
+{
+  "name": "sfcc-ocapi-client",
+  "version": "1.0.0",
+  "description": "An isomorphic client for interacting with salesforce open commerce api (OCAPI).",
+  "main": "dist/sfcc-ocapi-client.cjs.js",
+  "module": "dist/sfcc-ocapi-client.es.js",
+  "browser": "dist/sfcc-ocapi-client.umd.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "build": "rollup -c --environment BUILD:production",
+    "watch": "rollup -c -w",
+    "prepare": "husky"
+  },
+  "type": "module",
+  "keywords": [
+    "Salesforce",
+    "OCAPI",
+    "SFCC",
+    "CommerceCloud"
+  ],
+  "author": "Brinsil Elias",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.2.0",
+    "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.2.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "mocha": "^10.4.0",
+    "prettier": "^3.2.5",
+    "rollup": "^4.17.2"
+  }
+}
