@@ -4,13 +4,16 @@ import commonjs from '@rollup/plugin-commonjs';
 import aliasPlugin from '@rollup/plugin-alias';
 import resolve from '@rollup/plugin-node-resolve';
 import path from 'path';
-import pkg from './package.json';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
+const pkg = require('./package.json');
 const namedInput = 'lib/index.js';
-const external = Object.keys(pkg.dependencies);
+const external = Object.keys(pkg.devDependencies);
 
 const buildConfig = ({
-  es5, browser = true,
+  es5,
+  browser = true,
   minifiedVersion = true,
   alias,
   ...config
@@ -37,14 +40,14 @@ const buildConfig = ({
       commonjs(),
 
       minified && terser(),
-      ...(es5 ? [babel({ exclude: ['node_modules/**'], babelHelpers: 'bundled' })] : []),
+      ...(es5
+        ? [babel({ exclude: ['node_modules/**'], babelHelpers: 'bundled' })]
+        : []),
       ...(config.plugins || [])
     ]
   });
 
-  const configs = [
-    build({ minified: false })
-  ];
+  const configs = [build({ minified: false })];
 
   if (minifiedVersion) {
     configs.push(build({ minified: true }));

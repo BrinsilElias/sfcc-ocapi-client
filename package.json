@@ -2,12 +2,12 @@
   "name": "sfcc-ocapi-client",
   "version": "1.0.0",
   "description": "An isomorphic client for interacting with salesforce open commerce api (OCAPI).",
-  "main": "dist/sfcc-ocapi-client.cjs.js",
-  "module": "dist/sfcc-ocapi-client.es.js",
-  "browser": "dist/sfcc-ocapi-client.umd.js",
+  "main": "dist/node/sfcc-ocapi-client.cjs.js",
+  "module": "dist/esm/sfcc-ocapi-client.es.js",
+  "browser": "dist/browser/sfcc-ocapi-client.umd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "build": "rollup -c --environment BUILD:production",
+    "build": "rollup -c",
     "watch": "rollup -c -w",
     "prepare": "husky"
   },
@@ -19,7 +19,7 @@
     "CommerceCloud"
   ],
   "author": "Brinsil Elias",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.24.5",
     "@babel/preset-env": "^7.24.5",
