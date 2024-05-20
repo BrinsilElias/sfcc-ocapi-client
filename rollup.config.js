@@ -1,23 +1,19 @@
-import babel from '@rollup/plugin-babel';
+import { babel } from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
 import aliasPlugin from '@rollup/plugin-alias';
 import resolve from '@rollup/plugin-node-resolve';
 import path from 'path';
 import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
 
+const require = createRequire(import.meta.url);
 const pkg = require('./package.json');
 const namedInput = 'lib/index.js';
-const external = Object.keys(pkg.devDependencies);
+const external = Object.keys(pkg.dependencies);
 
-const buildConfig = ({
-  es5,
-  browser = true,
-  minifiedVersion = true,
-  alias,
-  ...config
-}) => {
+const isProduction = process.env.NODE_ENV === 'production';
+
+const buildConfig = ({ minifiedVersion = true, alias, envName, ...config }) => {
   const { file } = config.output;
   const ext = path.extname(file);
   const basename = path.basename(file, ext);
@@ -36,20 +32,24 @@ const buildConfig = ({
       aliasPlugin({
         entries: alias || []
       }),
-      resolve({ browser }),
+      resolve(),
       commonjs(),
 
       minified && terser(),
-      ...(es5
-        ? [babel({ exclude: ['node_modules/**'], babelHelpers: 'bundled' })]
-        : []),
+      ...[
+        babel({
+          exclude: ['node_modules/**'],
+          babelHelpers: 'runtime',
+          envName: envName || 'production'
+        })
+      ],
       ...(config.plugins || [])
     ]
   });
 
   const configs = [build({ minified: false })];
 
-  if (minifiedVersion) {
+  if (minifiedVersion && isProduction) {
     configs.push(build({ minified: true }));
   }
 
@@ -60,19 +60,28 @@ export default [
   ...buildConfig({
     output: {
       file: pkg.main,
-      format: 'cjs'
-    }
+      format: 'umd',
+      name: 'sfcc-ocapi-client',
+      sourcemap: !isProduction
+    },
+    envName: 'production'
   }),
   ...buildConfig({
     output: {
-      file: pkg.module,
-      format: 'es'
-    }
+      file: pkg.cjs,
+      format: 'cjs',
+      sourcemap: !isProduction
+    },
+    minifiedVersion: false,
+    envName: 'node'
   }),
   ...buildConfig({
     output: {
-      file: pkg.browser,
-      format: 'umd'
-    }
+      file: pkg.esm,
+      format: 'esm',
+      sourcemap: !isProduction
+    },
+    minifiedVersion: false,
+    envName: 'node'
   })
 ];
