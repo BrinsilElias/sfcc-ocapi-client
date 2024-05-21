@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import { FlatCompat } from '@eslint/eslintrc';
+import babelParser from '@babel/eslint-parser';
 import airbnbConfig from 'eslint-config-airbnb-base';
 import prettier from 'eslint-config-prettier';
 import path from 'node:path';
@@ -20,7 +21,7 @@ export default [
   prettier,
   ...airbnb,
   {
-    languageOptions: { globals: globals.browser }
+    languageOptions: { parser: babelParser, globals: globals.browser }
   },
   {
     ignores: ['node_modules/**', 'dist/**', 'test/**', '*.config.*js']
