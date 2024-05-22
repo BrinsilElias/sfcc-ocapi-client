@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "An isomorphic client for interacting with salesforce open commerce api (OCAPI).",
   "main": "dist/sfcc-ocapi-client.js",
-  "cjs": "dist/cjs/sfcc-ocapi-client.cjs",
-  "esm": "dist/esm/sfcc-ocapi-client.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/sfcc-ocapi-client.js",
+      "require": "./dist/cjs/sfcc-ocapi-client.js"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "build": "rollup -c --environment NODE_ENV:production",

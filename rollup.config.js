@@ -62,24 +62,24 @@ export default [
       file: pkg.main,
       format: 'umd',
       name: 'sfcc-ocapi-client',
-      sourcemap: !isProduction
+      sourcemap: isProduction
     },
     envName: 'production'
   }),
   ...buildConfig({
     output: {
-      file: pkg.cjs,
+      file: pkg.exports['.'].require,
       format: 'cjs',
-      sourcemap: !isProduction
+      sourcemap: isProduction
     },
     minifiedVersion: false,
     envName: 'node'
   }),
   ...buildConfig({
     output: {
-      file: pkg.esm,
+      file: pkg.exports['.'].import,
       format: 'esm',
-      sourcemap: !isProduction
+      sourcemap: isProduction
     },
     minifiedVersion: false,
     envName: 'node'
