@@ -2,7 +2,6 @@ import js from '@eslint/js';
 import globals from 'globals';
 import { FlatCompat } from '@eslint/eslintrc';
 import babelParser from '@babel/eslint-parser';
-import airbnbConfig from 'eslint-config-airbnb-base';
 import prettier from 'eslint-config-prettier';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -10,16 +9,14 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const compact = new FlatCompat({
+const compat = new FlatCompat({
   baseDirectory: __dirname
 });
 
-const airbnb = compact.config(airbnbConfig);
-
 export default [
   js.configs.recommended,
+  ...compat.extends('eslint-config-airbnb-base'),
   prettier,
-  ...airbnb,
   {
     languageOptions: { parser: babelParser, globals: globals.browser }
   },
