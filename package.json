@@ -6,7 +6,7 @@
   "exports": {
     ".": {
       "import": "./dist/esm/sfcc-ocapi-client.js",
-      "require": "./dist/cjs/sfcc-ocapi-client.js"
+      "require": "./dist/cjs/sfcc-ocapi-client.cjs"
     }
   },
   "scripts": {

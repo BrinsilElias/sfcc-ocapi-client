@@ -35,7 +35,10 @@ export default [
           functions: 'never'
         }
       ],
-      'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
+      'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+      'no-underscore-dangle': ['error', { allowAfterThis: true }],
+      'import/no-named-as-default': 'off',
+      'import/no-named-as-default-member': 'off',
     }
   }
 ];
