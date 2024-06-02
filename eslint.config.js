@@ -38,7 +38,7 @@ export default [
       'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
       'no-underscore-dangle': [
         'error',
-        { allow: ['_baseUrl', '_clientId', '_ocapiVersion', '_timeout', '_authentication'], allowAfterThis: true }
+        { allow: ['_baseURL', '_clientId', '_ocapiVersion', '_timeout', '_authentication'], allowAfterThis: true }
       ],
       'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off'
