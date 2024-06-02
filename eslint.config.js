@@ -21,7 +21,7 @@ export default [
     languageOptions: { parser: babelParser, globals: globals.browser }
   },
   {
-    ignores: ['node_modules/**', 'dist/**', 'test/**', '*.config.*js']
+    ignores: ['node_modules/**', 'dist/**', 'tests/**', '*.config.*js']
   },
   {
     rules: {
