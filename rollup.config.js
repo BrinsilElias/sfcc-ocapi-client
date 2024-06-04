@@ -5,6 +5,10 @@ import aliasPlugin from '@rollup/plugin-alias';
 import resolve from '@rollup/plugin-node-resolve';
 import path from 'path';
 import { createRequire } from 'module';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const require = createRequire(import.meta.url);
 const pkg = require('./package.json');
@@ -30,7 +34,12 @@ const buildConfig = ({ minifiedVersion = true, alias, envName, ...config }) => {
     },
     plugins: [
       aliasPlugin({
-        entries: alias || []
+        entries: {
+          '@core': path.resolve(__dirname, 'lib/core'),
+          '@utils': path.resolve(__dirname, 'lib/utils'),
+          '@model': path.resolve(__dirname, 'lib/model'),
+          '@constants': path.resolve(__dirname, 'lib/constants')
+        }
       }),
       resolve(),
       commonjs(),
