@@ -144,4 +144,64 @@ describe('schema validator', () => {
       expect(() => validateOcapiVersion({ ocapiVersion: version })).toThrow(messages.ERROR_OCAPI_VERSION_PATTERN);
     });
   });
+
+  describe('authentication validator', () => {
+    let authentication;
+    const validateAuthentication = validator('authentication');
+    it('should return true if the authentication is valid', () => {
+      authentication = {
+        customer_type: 'credentials',
+        customer_id: 'dummy@email.com',
+        customer_password: 'password'
+      };
+      expect(validateAuthentication({ authentication: authentication })).toBe(true);
+    });
+
+    it('should throw an error if the authentication is an invalid type', () => {
+      authentication = 123;
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_TYPE);
+    });
+
+    it('should throw an error if the authentication is missing the customer type', () => {
+      authentication = {
+        customer_id: 'dummy@email.com',
+        customer_password: 'password'
+      };
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_TYPE_MISSING);
+    });
+
+    it('should throw an error if the authentication has an invalid customer type', () => {
+      authentication = {
+        customer_type: 'invalid',
+        customer_id: 'dummy@email.com',
+        customer_password: 'password'
+      };
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_TYPE_ENUM);
+    });
+
+    it('should throw an error if the authentication is missing the customer id', () => {
+      authentication = {
+        customer_type: 'credentials',
+        customer_password: 'password'
+      };
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_ID_MISSING);
+    });
+    
+    it('should throw an error if the authentication has an invalid customer id', () => {
+      authentication = {
+        customer_type: 'credentials',
+        customer_id: 'dummy#email.com',
+        customer_password: 'password'
+      };
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_ID_FORMAT);
+    });
+
+    it('should throw an error if the authentication is missing the customer password', () => {
+      authentication = {
+        customer_type: 'credentials',
+        customer_id: 'dummy@email.com'
+      };
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_PASSWORD_MISSING);
+    });
+  });
 });
