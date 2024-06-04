@@ -1,5 +1,5 @@
-import * as messages from '../../lib/constants/errorConstants';
-import createSchemaValidator from '../../lib/utils/factory/schemaValidator';
+import * as errorMessages from '@constants/errorConstants';
+import createSchemaValidator from '@utils/factory/schemaValidator';
 
 describe('schema validator', () => {
   const validator = createSchemaValidator();
@@ -31,7 +31,7 @@ describe('schema validator', () => {
           customer_password: 'password'
         }
       };
-      expect(() => validateMain(config)).toThrow(messages.ERROR_BASE_URL_MISSING);
+      expect(() => validateMain(config)).toThrow(errorMessages.ERROR_BASE_URL_MISSING);
     });
 
     it('should throw an error if client id is missing from the configuration', () => {
@@ -43,7 +43,7 @@ describe('schema validator', () => {
           customer_password: 'password'
         }
       };
-      expect(() => validateMain(config)).toThrow(messages.ERROR_CLIENT_ID_MISSING);
+      expect(() => validateMain(config)).toThrow(errorMessages.ERROR_CLIENT_ID_MISSING);
     });
 
     it('should throw an error if authentication is missing from the configuration', () => {
@@ -51,7 +51,7 @@ describe('schema validator', () => {
         baseURL: 'https://zzra-001.dx.commercecloud.salesforce.com/s/RefArch/dw/shop/v20_3',
         clientId: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
       };
-      expect(() => validateMain(config)).toThrow(messages.ERROR_AUTH_MISSING);
+      expect(() => validateMain(config)).toThrow(errorMessages.ERROR_AUTH_MISSING);
     });
 
     it('should throw an error if the configuration has invalid properties', () => {
@@ -65,7 +65,7 @@ describe('schema validator', () => {
         },
         invalidProperty: 'invalid'
       };
-      expect(() => validateMain(config)).toThrow(messages.ERROR_INVALID_CONFIG);
+      expect(() => validateMain(config)).toThrow(errorMessages.ERROR_INVALID_CONFIG);
     });
   });
 
@@ -79,12 +79,16 @@ describe('schema validator', () => {
 
     it('should throw an error if the base url is an invalid type', () => {
       baseUrl = 123;
-      expect(() => validateBaseUrl({ baseURL: baseUrl })).toThrow(messages.ERROR_BASE_URL_TYPE);
+      expect(() => validateBaseUrl({ baseURL: baseUrl })).toThrow(
+        errorMessages.ERROR_BASE_URL_TYPE
+      );
     });
 
     it('should throw an error if the base url is an invalid format', () => {
       baseUrl = 'zzra-001.dx.commercecloud.salesforce.com';
-      expect(() => validateBaseUrl({ baseURL: baseUrl })).toThrow(messages.ERROR_BASE_URL_FORMAT);
+      expect(() => validateBaseUrl({ baseURL: baseUrl })).toThrow(
+        errorMessages.ERROR_BASE_URL_FORMAT
+      );
     });
   });
 
@@ -98,7 +102,9 @@ describe('schema validator', () => {
 
     it('should throw an error if the client id is an invalid type', () => {
       clientId = 123456789;
-      expect(() => validateClientId({ clientId: clientId })).toThrow(messages.ERROR_CLIENT_ID_TYPE);
+      expect(() => validateClientId({ clientId: clientId })).toThrow(
+        errorMessages.ERROR_CLIENT_ID_TYPE
+      );
     });
   });
 
@@ -112,17 +118,17 @@ describe('schema validator', () => {
 
     it('should throw an error if the timeout is less than the minimum', () => {
       timeout = 1000;
-      expect(() => validateTimeout({ timeout: timeout })).toThrow(messages.ERROR_TIMEOUT_MIN);
+      expect(() => validateTimeout({ timeout: timeout })).toThrow(errorMessages.ERROR_TIMEOUT_MIN);
     });
 
     it('should throw an error if the timeout is greater than the maximum', () => {
       timeout = 20000;
-      expect(() => validateTimeout({ timeout: timeout })).toThrow(messages.ERROR_TIMEOUT_MAX);
+      expect(() => validateTimeout({ timeout: timeout })).toThrow(errorMessages.ERROR_TIMEOUT_MAX);
     });
 
     it('should throw an error if the timeout is an invalid type', () => {
       timeout = '10000';
-      expect(() => validateTimeout({ timeout: timeout })).toThrow(messages.ERROR_TIMEOUT_TYPE);
+      expect(() => validateTimeout({ timeout: timeout })).toThrow(errorMessages.ERROR_TIMEOUT_TYPE);
     });
   });
 
@@ -137,14 +143,14 @@ describe('schema validator', () => {
     it('should throw an error if the ocapi version is an invalid type', () => {
       version = 123;
       expect(() => validateOcapiVersion({ ocapiVersion: version })).toThrow(
-        messages.ERROR_OCAPI_VERSION_TYPE
+        errorMessages.ERROR_OCAPI_VERSION_TYPE
       );
     });
 
     it('should throw an error if the ocapi version is an invalid pattern', () => {
       version = 'v20';
       expect(() => validateOcapiVersion({ ocapiVersion: version })).toThrow(
-        messages.ERROR_OCAPI_VERSION_PATTERN
+        errorMessages.ERROR_OCAPI_VERSION_PATTERN
       );
     });
   });
@@ -164,7 +170,7 @@ describe('schema validator', () => {
     it('should throw an error if the authentication is an invalid type', () => {
       authentication = 123;
       expect(() => validateAuthentication({ authentication: authentication })).toThrow(
-        messages.ERROR_AUTH_TYPE
+        errorMessages.ERROR_AUTH_TYPE
       );
     });
 
@@ -174,7 +180,7 @@ describe('schema validator', () => {
         customer_password: 'password'
       };
       expect(() => validateAuthentication({ authentication: authentication })).toThrow(
-        messages.ERROR_AUTH_CUSTOMER_TYPE_MISSING
+        errorMessages.ERROR_AUTH_CUSTOMER_TYPE_MISSING
       );
     });
 
@@ -185,7 +191,7 @@ describe('schema validator', () => {
         customer_password: 'password'
       };
       expect(() => validateAuthentication({ authentication: authentication })).toThrow(
-        messages.ERROR_AUTH_CUSTOMER_TYPE_ENUM
+        errorMessages.ERROR_AUTH_CUSTOMER_TYPE_ENUM
       );
     });
 
@@ -195,7 +201,7 @@ describe('schema validator', () => {
         customer_password: 'password'
       };
       expect(() => validateAuthentication({ authentication: authentication })).toThrow(
-        messages.ERROR_AUTH_CUSTOMER_ID_MISSING
+        errorMessages.ERROR_AUTH_CUSTOMER_ID_MISSING
       );
     });
 
@@ -206,7 +212,7 @@ describe('schema validator', () => {
         customer_password: 'password'
       };
       expect(() => validateAuthentication({ authentication: authentication })).toThrow(
-        messages.ERROR_AUTH_CUSTOMER_ID_FORMAT
+        errorMessages.ERROR_AUTH_CUSTOMER_ID_FORMAT
       );
     });
 
@@ -216,7 +222,7 @@ describe('schema validator', () => {
         customer_id: 'dummy@email.com'
       };
       expect(() => validateAuthentication({ authentication: authentication })).toThrow(
-        messages.ERROR_AUTH_CUSTOMER_PASSWORD_MISSING
+        errorMessages.ERROR_AUTH_CUSTOMER_PASSWORD_MISSING
       );
     });
   });

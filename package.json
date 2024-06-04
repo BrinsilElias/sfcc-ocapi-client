@@ -10,6 +10,7 @@
     }
   },
   "scripts": {
+    "lint": "lint-staged",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "build": "rollup -c --environment NODE_ENV:production",
     "watch": "rollup -c -w",
@@ -41,6 +42,7 @@
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "globals": "^15.2.0",
     "husky": "^9.0.11",
     "jest": "^29.7.0",
@@ -53,5 +55,14 @@
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
     "axios": "^1.7.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
   }
 }

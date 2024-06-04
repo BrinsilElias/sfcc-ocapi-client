@@ -38,10 +38,27 @@ export default [
       'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
       'no-underscore-dangle': [
         'error',
-        { allow: ['_baseURL', '_clientId', '_ocapiVersion', '_timeout', '_authentication'], allowAfterThis: true }
+        {
+          allow: ['_baseURL', '_clientId', '_ocapiVersion', '_timeout', '_authentication'],
+          allowAfterThis: true
+        }
       ],
       'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off'
+    }
+  },
+  {
+    settings: {
+      'import/resolver': {
+        alias: {
+          map: [
+            ['@core', path.resolve(__dirname, 'lib/core')],
+            ['@utils', path.resolve(__dirname, 'lib/utils')],
+            ['@model', path.resolve(__dirname, 'lib/model')],
+            ['@constants', path.resolve(__dirname, 'lib/constants')]
+          ]
+        }
+      }
     }
   }
 ];
