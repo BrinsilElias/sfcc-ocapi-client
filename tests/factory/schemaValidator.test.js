@@ -136,12 +136,16 @@ describe('schema validator', () => {
 
     it('should throw an error if the ocapi version is an invalid type', () => {
       version = 123;
-      expect(() => validateOcapiVersion({ ocapiVersion: version })).toThrow(messages.ERROR_OCAPI_VERSION_TYPE);
+      expect(() => validateOcapiVersion({ ocapiVersion: version })).toThrow(
+        messages.ERROR_OCAPI_VERSION_TYPE
+      );
     });
 
     it('should throw an error if the ocapi version is an invalid pattern', () => {
       version = 'v20';
-      expect(() => validateOcapiVersion({ ocapiVersion: version })).toThrow(messages.ERROR_OCAPI_VERSION_PATTERN);
+      expect(() => validateOcapiVersion({ ocapiVersion: version })).toThrow(
+        messages.ERROR_OCAPI_VERSION_PATTERN
+      );
     });
   });
 
@@ -159,7 +163,9 @@ describe('schema validator', () => {
 
     it('should throw an error if the authentication is an invalid type', () => {
       authentication = 123;
-      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_TYPE);
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(
+        messages.ERROR_AUTH_TYPE
+      );
     });
 
     it('should throw an error if the authentication is missing the customer type', () => {
@@ -167,7 +173,9 @@ describe('schema validator', () => {
         customer_id: 'dummy@email.com',
         customer_password: 'password'
       };
-      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_TYPE_MISSING);
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(
+        messages.ERROR_AUTH_CUSTOMER_TYPE_MISSING
+      );
     });
 
     it('should throw an error if the authentication has an invalid customer type', () => {
@@ -176,7 +184,9 @@ describe('schema validator', () => {
         customer_id: 'dummy@email.com',
         customer_password: 'password'
       };
-      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_TYPE_ENUM);
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(
+        messages.ERROR_AUTH_CUSTOMER_TYPE_ENUM
+      );
     });
 
     it('should throw an error if the authentication is missing the customer id', () => {
@@ -184,16 +194,20 @@ describe('schema validator', () => {
         customer_type: 'credentials',
         customer_password: 'password'
       };
-      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_ID_MISSING);
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(
+        messages.ERROR_AUTH_CUSTOMER_ID_MISSING
+      );
     });
-    
+
     it('should throw an error if the authentication has an invalid customer id', () => {
       authentication = {
         customer_type: 'credentials',
         customer_id: 'dummy#email.com',
         customer_password: 'password'
       };
-      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_ID_FORMAT);
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(
+        messages.ERROR_AUTH_CUSTOMER_ID_FORMAT
+      );
     });
 
     it('should throw an error if the authentication is missing the customer password', () => {
@@ -201,7 +215,9 @@ describe('schema validator', () => {
         customer_type: 'credentials',
         customer_id: 'dummy@email.com'
       };
-      expect(() => validateAuthentication({ authentication: authentication })).toThrow(messages.ERROR_AUTH_CUSTOMER_PASSWORD_MISSING);
+      expect(() => validateAuthentication({ authentication: authentication })).toThrow(
+        messages.ERROR_AUTH_CUSTOMER_PASSWORD_MISSING
+      );
     });
   });
 });
