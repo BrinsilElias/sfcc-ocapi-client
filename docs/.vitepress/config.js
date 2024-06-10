@@ -6,21 +6,35 @@ export default defineConfig({
   description: 'A client app to interact with SFCC OCAPI',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
 
     sidebar: [
+      { text: 'Introduction', link: '/' },
+      { text: 'Get Started', link: '/get-started' },
+      { text: 'Examples', link: '/examples' },
       {
-        text: 'Examples',
+        text: 'API References',
+        collapsed: false,
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          {
+            text: 'Shop API',
+            collapsed: false,
+            link: '/shop',
+            items: [
+              { text: 'Customers', link: '/shop/customers' },
+              { text: 'Products', link: '/shop/products' },
+              { text: 'Categories', link: '/shop/categories' },
+              { text: 'Contents', link: '/shop/contents' },
+              { text: 'Orders', link: '/shop/orders' },
+              { text: 'Promotions', link: '/shop/promotions' },
+              { text: 'Custom Object', link: '/shop/custom-objects' },
+              { text: 'Site', link: '/shop/site' },
+              { text: 'Stores', link: '/shop/stores' }
+            ]
+          }
         ]
       }
     ],
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }]
+    socialLinks: [{ icon: 'github', link: 'https://github.com/BrinsilElias/sfcc-ocapi-client' }]
   }
 });
