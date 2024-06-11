@@ -11,44 +11,13 @@ Before diving into the examples, ensure that you have the client installed and i
 This example demonstrates how to fetch a list of products using the `Products` sub-module.
 
 ```js
-const { ShopApi } = require('sfcc-ocapi-client');
-const client = new ShopApi({ config: your-config-here });
+const { createOcapiInstance } = require('sfcc-ocapi-client');
+const shopApi = createOcapiInstance({ config: your-config-here });
 
-client.Products.getProducts({ params: { limit: 10 } })
+const productApi = shopApi.Products
+productApi.getProductById('productId')
   .then(products => console.log(products))
   .catch(error => console.error('Failed to fetch products:', error));
-```
-
-## Example 2: Creating a Promotion
-
-Learn how to create a new promotion using the Promotions sub-module.
-
-```js
-const client = new ShopApi({ config: your-config-here });
-
-client.Promotions.createPromotion({
-  name: 'Summer Sale',
-  discountType: 'percentage',
-  discountValue: 20
-})
-.then(promotion => console.log('Promotion created:', promotion))
-.catch(error => console.error('Failed to create promotion:', error));
-```
-
-## Example 3: Updating Customer Details
-
-Update customer details using the Customers sub-module.
-
-```js
-const client = new ShopApi({ config: your-config-here });
-
-client.Customers.updateCustomer('customerId123', {
-  firstName: 'Jane',
-  lastName: 'Doe',
-  email: 'jane.doe@example.com'
-})
-.then(updatedCustomer => console.log('Customer updated:', updatedCustomer))
-.catch(error => console.error('Failed to update customer:', error));
 ```
 
 ## Additional Tips

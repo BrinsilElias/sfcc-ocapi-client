@@ -6,7 +6,7 @@ next: Get Started
 
 # What is Sfcc Ocapi Client
 
-> 🚀 Let's you work with salesforce ocapi like a breeze
+> Let's you work with salesforce ocapi like a breeze
 
 `sfcc-ocapi-client` is a node/npm package designed to streamline your integration with Salesforce's Open Commerce API, offering easy-to-use methods to interact with various endpoints.
 

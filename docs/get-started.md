@@ -19,7 +19,7 @@ npm install sfcc-ocapi-client
 pnpm add sfcc-ocapi-client
 ```
 
-```sh [yarn]
+```sh [yard]
 yarn add sfcc-ocapi-client
 ```
 
@@ -73,11 +73,11 @@ Here’s what typically goes into the config object:
 ```js
 const config = {
   baseURL: 'https://instance/s/siteId/dw/resource/ocapi-version',
-  clientId: 'aaaaaaaaaaaaaaaaaaaaaaaaaaa',
+  clientId: 'aeb8b4af-749b-488d-94be-d5c85fab699c',
   authentication: {
     customer_type: 'credentials',
-    customer_id: 'customer-email',
-    customer_password: 'customer-password'
+    customer_id: 'brinsilelias01@gmail.com',
+    customer_password: '143@Physics'
   },
   ocapiVersion: 'v24_1'
 };
