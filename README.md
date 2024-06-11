@@ -87,8 +87,6 @@ Please ensure you have Node.js installed on your machine, version 18 or greater.
 
 To begin using the `sfcc-ocapi-client`, choose your preferred package manager from the options below to install it in your project.
 
-::: code-group
-
 ```sh
 npm install sfcc-ocapi-client
 ```
@@ -100,8 +98,6 @@ pnpm add sfcc-ocapi-client
 ```sh
 yarn add sfcc-ocapi-client
 ```
-
-:::
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
