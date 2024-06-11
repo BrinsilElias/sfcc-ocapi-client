@@ -163,6 +163,7 @@ const config = {
   },
   ocapiVersion: 'v24_1'
 };
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
