@@ -15,4 +15,3 @@ next: Get Started
 * Simplified API connection setup with custom configurations.
 * Pre-configured methods for different API endpoints like `Products`, `Promotions`, and `Customers`.
 * Custom error handling and response parsing.
-* Extendable structure for adding more API endpoints.
