@@ -13,7 +13,7 @@
         ·
         <a href="https://github.com/BrinsilElias/sfcc-ocapi-client/issues">Request Feature</a>
         ·
-        <a href="https://github.com/BrinsilElias/sfcc-ocapi-client/issues">Read Docs</a>
+        <a href="https://sfcc-ocapi-client.netlify.app/">Read Docs</a>
     </p>
 </div>
 
