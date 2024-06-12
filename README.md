@@ -8,7 +8,6 @@
         A node package that let's you work with salesforce OCAPI like a breeze.
         <br />
         <br />
-        <a href="https://sfcc-ocapi-client-demo.netlify.app/" target="_blank">View Demo</a>
         ·
         <a href="https://github.com/BrinsilElias/sfcc-ocapi-client/issues">Report Bug</a>
         ·
@@ -32,6 +31,7 @@
         <li>
             <a href="#getting-started">Getting Started</a>
             <ul>
+                <li><a href="#prerequisites">Prerequisites</a></li>
                 <li><a href="#installation">Installation</a></li>
                 <li><a href="#configuration">Configuration</a></li>
             </ul>
@@ -61,7 +61,6 @@
 * Simplified API connection setup with custom configurations.
 * Pre-configured methods for different API endpoints like `Products`, `Promotions`, and `Customers`.
 * Custom error handling and response parsing.
-* Extendable structure for adding more API endpoints.
 
 ### Built With
 
@@ -87,16 +86,19 @@ Please ensure you have Node.js installed on your machine, version 18 or greater.
 
 To begin using the `sfcc-ocapi-client`, choose your preferred package manager from the options below to install it in your project.
 
+- Using npm
 ```sh
-npm install sfcc-ocapi-client
+$ npm install sfcc-ocapi-client
 ```
 
+- Using pnpm
 ```sh
-pnpm add sfcc-ocapi-client
+$ pnpm add sfcc-ocapi-client
 ```
 
+- Using yarn:
 ```sh
-yarn add sfcc-ocapi-client
+$ yarn add sfcc-ocapi-client
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

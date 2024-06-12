@@ -4,7 +4,9 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'Sfcc Ocapi Client',
   description: 'A client app to interact with SFCC OCAPI',
+  head: [['link', { rel: 'icon', href: 'assets/favicon.ico' }]],
   themeConfig: {
+    logo: 'assets/logo.png',
     // https://vitepress.dev/reference/default-theme-config
 
     sidebar: [
