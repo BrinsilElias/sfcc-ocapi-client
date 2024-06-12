@@ -30,16 +30,21 @@ yarn add sfcc-ocapi-client
 Congratulations! You've successfully set up sfcc-ocapi-client 🎉. Let’s make your first API call to see it in action:
 
 ```js
-const { createOcapiInstance } = require('sfcc-ocapi-client');
+const { getShopApi } = require('sfcc-ocapi-client');
 // Read below to know about the configuration object
 const config = require('./config');
 
-const shopApi = new createOcapiInstance(config);
+const shopApi = getShopApi(config);
 const productApi = shopApi.Products;
 
-productApi.getProducts('product-id')
-  .then((response) => console.log(response))
-  .catch((error) => console.log(error));
+(async () => {
+  try {
+    const product = await productApi.getProducts('product-id');
+    console.log(product);
+  } catch (error) {
+    console.log(error);
+  }
+})();
 ```
 
 ::: tip
@@ -51,9 +56,14 @@ import { createOcapiInstance } from 'sfcc-ocapi-client'; // [!code focus]
 const shopApi = new createOcapiInstance(config);
 const productApi = shopApi.Products;
 
-productApi.getProducts('product-id')
-  .then((response) => console.log(response))
-  .catch((error) => console.log(error));
+(async () => {
+  try {
+    const product = await productApi.getProducts('product-id');
+    console.log(product);
+  } catch (error) {
+    console.log(error);
+  }
+})();
 ```
 This will also work 😄
 :::
@@ -74,11 +84,6 @@ Here’s what typically goes into the config object:
 const config = {
   baseURL: 'https://instance/s/siteId/dw/resource/ocapi-version',
   clientId: 'aaaaaaaaaaaaaaaaaaaaaaaaaa',
-  authentication: {
-    customer_type: 'credentials',
-    customer_id: 'customer-email',
-    customer_password: 'customer-password'
-  },
   ocapiVersion: 'v24_1'
 };
 ```
