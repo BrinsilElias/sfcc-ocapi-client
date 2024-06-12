@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
     <a href="https://github.com/BrinsilElias/sfcc-ocapi-client">
-        <img src="./docs/assets/logo.png" alt="Logo" width="80" height="80">
+        <img src="./docs/public/logo.png" alt="Logo" width="80" height="80">
     </a>
     <h3 align="center">SFCC OCAPI Client</h3>
     <p align="center">
