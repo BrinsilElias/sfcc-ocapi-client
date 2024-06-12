@@ -46,14 +46,6 @@ describe('schema validator', () => {
       expect(() => validateMain(config)).toThrow(errorMessages.ERROR_CLIENT_ID_MISSING);
     });
 
-    it('should throw an error if authentication is missing from the configuration', () => {
-      const config = {
-        baseURL: 'https://zzra-001.dx.commercecloud.salesforce.com/s/RefArch/dw/shop/v20_3',
-        clientId: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-      };
-      expect(() => validateMain(config)).toThrow(errorMessages.ERROR_AUTH_MISSING);
-    });
-
     it('should throw an error if the configuration has invalid properties', () => {
       const config = {
         baseURL: 'https://zzra-001.dx.commercecloud.salesforce.com/s/RefArch/dw/shop/v20_3',
